@@ -6,6 +6,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
+      
       - name: Setup Theos
         run: |
           export THEOS=$HOME/theos
@@ -13,12 +14,15 @@ jobs:
           brew install ldid xz
           echo "THEOS=$THEOS" >> $GITHUB_ENV
           echo "$THEOS/bin" >> $GITHUB_PATH
+          
       - name: Build
         run: |
           make clean
           make
+          
       - name: Upload dylib
         uses: actions/upload-artifact@v4
         with:
           name: xray-dylib
-          path: .theos/obj/xray.dylib
+          # .theos/obj/ 以下のすべての .dylib を拾う
+          path: .theos/obj/**/*.dylib
