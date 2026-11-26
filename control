@@ -1,1 +1,8 @@
-
+Package: com.andrey.xray
+Name: xray
+Version: 0.1.0
+Architecture: iphoneos-arm64
+Description: Minecraft Xray toggle
+Maintainer: andrey
+Author: andrey
+Section: Tweaks
